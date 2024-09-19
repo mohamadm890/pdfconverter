@@ -7,3 +7,4 @@ pdf2docx
 python-dotenv==1.0.0
 gunicorn
 Werkzeug==2.2.2
+python-dotenv==1.0.0
