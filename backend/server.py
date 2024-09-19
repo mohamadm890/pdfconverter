@@ -18,7 +18,7 @@ app.config['SECRET_KEY'] = 'your_secret_key'
 Session(app)
 
 # MongoDB configuration
-client = MongoClient('_MakeSureToYours_')
+client = MongoClient(MONGO_URI)
 db = client.user_db
 users_collection = db.users
 trials_collection = db.trials
