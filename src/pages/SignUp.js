@@ -15,7 +15,7 @@ const SignUp = () => {
   
   const Post_Data = async () => {
     try {
-      const response = await fetch('https://5000-idx-pdfconverter-1726061683649.cluster-y34ecccqenfhcuavp7vbnxv7zk.cloudworkstations.dev/register', {
+      const response = await fetch('https://pdfconverter-3.onrender.com/register', {
         method: "POST",
         credentials: 'include',
         body:  JSON.stringify({ username, password }),
