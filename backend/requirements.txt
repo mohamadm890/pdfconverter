@@ -5,3 +5,4 @@ flask-session==0.4.0
 flask-cors
 pdf2docx
 python-dotenv==1.0.0
+gunicorn
