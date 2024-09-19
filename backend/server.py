@@ -1,12 +1,16 @@
+
 from flask import Flask, render_template, request, jsonify, send_file, redirect, url_for, session
 from pymongo import MongoClient
-from bson import ObjectId
-from flask_session import Session
 import bcrypt
+from flask_session import Session
 from flask_cors import CORS
 import uuid
 from pdf2docx import Converter
 import os
+from dotenv import load_dotenv
+
+# Load environment variables from .env file (if used locally)
+load_dotenv()
 
 app = Flask(__name__, template_folder='src')
 CORS(app, supports_credentials=True)
@@ -14,10 +18,13 @@ app.config['CORS_HEADERS'] = 'Content-Type'
 
 # Session configuration
 app.config['SESSION_TYPE'] = 'filesystem'
-app.config['SECRET_KEY'] = 'your_secret_key'
+app.config['SECRET_KEY'] = os.getenv('SECRET_KEY', 'your_secret_key')  # Use environment variable for secret key
 Session(app)
 
 # MongoDB configuration
+MONGO_URI = os.getenv('MONGO_URI')
+if not MONGO_URI:
+    raise ValueError("No MongoDB URI provided in environment variables")
 client = MongoClient(MONGO_URI)
 db = client.user_db
 users_collection = db.users
@@ -165,5 +172,5 @@ def trail():
     return jsonify({"message": "File uploaded and processed successfully"}), 200
 
 if __name__ == '__main__':
-     PORT = int(os.environ.get('PORT', 5000))  # Default to 5000 if not set
-     app.run(host='0.0.0.0', PORT=PORT)
+    PORT = int(os.environ.get('PORT', 5000))  # Default to 5000 if not set
+    app.run(host='0.0.0.0', port=PORT)
