@@ -6,8 +6,7 @@ import { Inter } from "next/font/google";
 import Header from "./Header";
 import Processing from './Processing.js'
 import { useRouter } from 'next/router';
-import toast from 'react-hot-toast';
-import { Toaster } from 'react-hot-toast';
+
 
 
 
@@ -19,8 +18,7 @@ export default function FileUploader() {
   const router = useRouter();
 
   const [file, setFile] = useState('')
-  const notify = () => toast.success('Your file is successfully uploaded!');
-  const notify_error = () => toast.error('Please You should upload PDF format!');
+
   
 
   async function testApiEndpoint() {
@@ -57,10 +55,9 @@ export default function FileUploader() {
    if ( file_ && file_.type === "application/pdf")
     {
       setFile(file_)
-      notify()
 
     } else {
-     notify_error()
+      console.log('check your file')
     }
    
   }
