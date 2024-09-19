@@ -6,4 +6,4 @@ flask-cors
 pdf2docx
 python-dotenv==1.0.0
 gunicorn
-Werkzeug
+Werkzeug==2.2.2
