@@ -28,7 +28,7 @@ export default function FileUploader() {
     formData.append('file', file)
 
     try {
-      const response = await fetch('https://5000-idx-pdfconverter-1726061683649.cluster-y34ecccqenfhcuavp7vbnxv7zk.cloudworkstations.dev/convert', {
+      const response = await fetch('https://pdfconverter-3.onrender.com/convert', {
         credentials: 'include', 
         method: 'POST',
         body: formData,
