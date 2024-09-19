@@ -3,5 +3,5 @@ pymongo==4.5.0
 bcrypt==4.0.1
 flask-session==0.4.0
 flask-cors
-pdf2docx==0.6.3
+pdf2docx
 python-dotenv==1.0.0
