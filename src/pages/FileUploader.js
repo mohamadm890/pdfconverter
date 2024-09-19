@@ -76,7 +76,6 @@ export default function FileUploader() {
     </div>
 
     </div>
-    <Toaster position="top-center" reverseOrder={false} />
     </main>
   );
 }
