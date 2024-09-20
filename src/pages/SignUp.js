@@ -33,9 +33,31 @@ const SignUp = () => {
       console.error('Error:', error);
       throw error;
     }
-  }
+  };
 
 
+  
+       
+
+    async function logout() {
+      try {
+        const response = await fetch('https://5000-idx-pdfconverter-1726061683649.cluster-y34ecccqenfhcuavp7vbnxv7zk.cloudworkstations.dev/logout', {
+          method: 'POST',
+          credentials: 'include',  // Ensure cookies (like session cookies) are included in the request
+        });
+    
+        if (response.ok) {
+          console.log('Logged out successfully');
+          alert("you are logout! BY!")
+          // Optionally redirect the user to the login page or homepage
+        } else {
+          console.error('Logout failed');
+        }
+      } catch (error) {
+        console.error('Error during logout:', error);
+      }
+    }
+    
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -59,37 +81,39 @@ const SignUp = () => {
 
   return (
     <div style={{
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
+      display: 'flex', 
+      justifyContent: 'center', 
+      alignItems: 'center', 
+      minHeight: '80vh', 
+    
       justifyContent: 'center',
       
     }}>
-      <div style={{padding: "24px", marginTop: 100, backgroundColor: "white", width: 300, height:324, borderRadius: 32, boxShdow: "rgba(0, 0, 0, 0.04) 0px 3px 5px"}}>
-      <h2 style={{fontSize:"28px" , fontWeight:"600", marginBottom: 12}}>Sign up</h2>
+      <div style={{padding: "24px", marginTop: "10%", backgroundColor: "white", width: 380, height:436, borderRadius: 32, boxShadow: "0px 10px 15px -3px rgba(0,0,0,0.1)"}}>
+      <h2 style={{fontSize:"32px" , fontWeight:"600", marginBottom: 12}}>Sign up</h2>
       <form onSubmit={handleSubmit}>
-        <div style={{ marginBottom: '15px' }}>
-          <label htmlFor="username" style={{fontSize: 12, fontWeight:"500", color: "#667185"}}>Username</label>
+        <div style={{ marginBottom: '15px', marginTop:"40px"}}>
+          <label htmlFor="username" style={{fontSize: 16, fontWeight:"500", color: "#667185"}}>Username</label>
           <input
             type="text"
             id="username"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
-            style={{ width: '100%', padding: '8px', boxSizing: 'border-box',border: '1px solid #F0F2F5', borderRadius: '8px'   }}
+            style={{ width: '100%', padding: '8px', boxSizing: 'border-box',border: '1px solid #F0F2F5', borderRadius: '8px', height:"52px", marginTop: 8  }}
           />
         </div>
         <div style={{ marginBottom: '15px' }}>
-          <label htmlFor="password" style={{fontSize: "12px", fontWeight:"500",  color: "#667185"}} >Password</label>
+          <label htmlFor="password" style={{fontSize: "16px", fontWeight:"500",  color: "#667185"}} >Password</label>
           <input
             type="password"
             id="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            style={{ width: '100%', padding: '8px', boxSizing: 'border-box', border: '1px solid #F0F2F5', borderRadius: '8px'   }}
+            style={{ width: '100%', padding: '8px', boxSizing: 'border-box', border: '1px solid #F0F2F5', borderRadius: '8px', height:"52px" , marginTop: 8  }}
           />
         </div>
-        <button type="submit" style={{ padding: '10px 20px', backgroundColor: '#CB1A14', color: '#fff', border: 'none', borderRadius: '8px', width: "100%", marginTop: 12 }}>login up</button>
-  
+        <button type="submit" style={{ padding: '10px 20px', backgroundColor: '#CB1A14', color: '#fff', border: 'none', borderRadius: '8px', width: "100%", marginTop: 12, height: 60 }}>
+Sign up        </button>
       </form>
       </div>
     </div>
